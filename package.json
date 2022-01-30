@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "rxjs 7 rate limiter",
   "main": "lib/index.js",
-  "typings": "lib/index",
+  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git://github.com/figedi/rxjs-ratelimiter.git"
