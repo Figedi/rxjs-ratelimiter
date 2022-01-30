@@ -11,7 +11,7 @@ export default class RateLimiter {
     private scheduler: SchedulerLike = asyncScheduler,
   ) {}
 
-  limit<T>(stream: Observable<T>): Observable<T> {
+  public limit<T>(stream: Observable<T>): Observable<T> {
     return of(null).pipe(
       concatMap(() => {
         const now = this.scheduler.now()
@@ -27,10 +27,7 @@ export default class RateLimiter {
 
           const wait = this.intervalEnds - this.intervalLength - now
           return wait > 0
-            ? of(null).pipe(
-                delay(wait, this.scheduler),
-                switchMapTo(stream),
-              )
+            ? of(null).pipe(delay(wait, this.scheduler), switchMapTo(stream))
             : stream
         }
       }),
